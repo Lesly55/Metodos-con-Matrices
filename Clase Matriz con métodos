@@ -1,0 +1,127 @@
+
+public class Matriz {
+	public int matriz1[][];
+    public int matriz2[][];
+    public int matrizResultado[][];
+    int sumaFilas = 0;
+	
+	public Matriz(int matriz1[][]) {
+		this.matriz1 = matriz1;
+		matrizResultado = new int[3][3];
+	}
+	
+	public Matriz(int matriz1[][], int matriz2[][]) {
+		this.matriz1 = matriz1;
+		this.matriz2 = matriz2;
+		matrizResultado = new int[3][3];
+	}
+	
+	public int encontrarMax() {
+		int numMayor = 0;
+		for(int i = 0; i < matriz1.length; i++) {
+			for(int j = 0; j < matriz1[i].length; j++) {
+				if(matriz1[i][j] > numMayor) {
+					numMayor = matriz1[i][j];
+				}
+			}
+		}
+		System.out.println("El numero mas grande de la matriz es: " + numMayor);
+		return numMayor;
+	}
+	
+	public void MatrizxEscalar(int escalar) {
+		//multiplica
+		for(int i = 0; i < matriz1.length; i++) {
+			for(int j = 0; j < matriz1[i].length; j++) {
+				int multiplicacion = matriz1[i][j] * escalar;
+				matrizResultado[i][j] = multiplicacion;
+			}
+		}
+		//imprime matriz resultante
+		for(int i = 0; i < matrizResultado.length; i++) {
+			for(int j = 0; j < matrizResultado[i].length; j++) {
+				System.out.print(matrizResultado[i][j] + " ");
+			}
+			System.out.println(" ");
+		}
+		
+	}
+    
+	public void multiMatrices() {
+		if(matriz1[0].length == matriz2.length) {
+		    //multiplicacion de matrices
+	        // primer for para recorrer las filas de la primera matriz
+	        for (int i = 0; i < matriz1.length; i++) {
+	          // segundo for para recorrer las columnas de la segunda matriz
+	          for (int j = 0; j < matriz1[i].length; j++) {
+	            // tercer for para recorrer las filas de la segunda matriz y las columnas de la
+	            // primera matriz
+	            for (int k = 0; k < matriz1.length; k++) {
+	            	sumaFilas = sumaFilas + (matriz1[i][k] * matriz2[k][j]);
+	            }
+	            matrizResultado[i][j] = sumaFilas;
+	            sumaFilas = 0;
+	          }
+	        }
+	    
+		}
+		
+		else {
+			System.out.println("Las matrices no son compatibles para multiplicarse");
+		}
+
+	    // imprimir matriz resulante
+	    for (int i = 0; i < matrizResultado.length; i++) {
+	      for (int j = 0; j < matrizResultado[i].length; j++) {
+	        System.out.print(matrizResultado[i][j] + " ");
+	      }
+	      System.out.println(" ");
+	    }
+	}
+	
+	public void sumaMatrices() {
+		//suma de matrices
+		for (int i = 0; i < matriz1.length; i++) {
+			for(int j = 0; j < matriz1[i].length; j++) {
+				matrizResultado[i][j] = matriz1[i][j] + matriz2[i][j];
+			}
+		}
+		
+		//imprimir
+		for(int i = 0; i < matrizResultado.length; i++) {
+			for(int j = 0; j < matrizResultado.length; j++) {
+				System.out.print(matrizResultado[i][j] + " ");
+			}
+			System.out.println(" ");
+		}
+	}
+	
+    public int sumaDiag() { 
+    	int sumaDiagonal = 0;
+		
+		for(int i = 0; i < matriz1.length; i++) {
+			sumaDiagonal = sumaDiagonal + matriz1[i][i];
+		}
+		System.out.println("La suma de la diagonal de la matriz es: " + sumaDiagonal);
+		return sumaDiagonal;
+		
+	}
+
+    public void matrizTrans() {
+	    //transpuesta de matriz
+	    for(int i = 0; i < matriz1.length; i++) {
+		    for(int j = 0; j < matriz1[i].length; j++) {
+				matrizResultado[j][i] = matriz1 [i][j];
+		    }
+	    }
+		
+	    //imprimir
+	    for(int i = 0; i < matrizResultado.length; i++) {
+		    for(int j = 0; j < matrizResultado.length; j++) {
+		    	System.out.print(matrizResultado[i][j] + " ");
+		    }
+		System.out.println(" ");
+	   }
+    }
+
+}
